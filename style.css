@@ -1,0 +1,203 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+     font-family: 'Ubuntu', sans-serif;
+}
+.main {
+    display : flex;
+    flex-direction : column;
+
+}
+.header {
+    font-size : 5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color : beige;
+   text-shadow: 1px 2px grey;
+   
+     
+}
+.container {
+    margin : auto;
+    padding :1rem;
+ width : 50%;
+ height : 70vh;  
+display : grid ;
+grid-template-rows: [start-screen] 20% [end-screen]  repeat(4 ,[start-row] 1fr [end-row]);
+grid-template-columns : minmax(min-content,80%) 1fr;
+grid-gap : 15px;
+border : 8px solid;
+border-image : linear-gradient(lightgray,grey) 1;
+box-shadow: 0  0.3rem 0.5rem grey , 
+ inset -5px  0.3rem 0.5rem grey;
+
+}
+
+.screen {
+   grid-row : start-screen / end-screen;
+   grid-column : 1/-1;
+
+   position: relative;
+}
+.screen__digits {
+    color : transparent;
+   height: 70%;
+   background : repeating-radial-gradient(  grey, transparent 2px ,orange 4px,lightgray 5px ) ;  
+padding : 1rem;
+   background-clip: border-box;
+font-size : 3rem;
+   border : 3px solid ;
+   border-image: linear-gradient(rgb(208, 208, 214),beige) 2 ;
+   box-shadow: inset 2px 2px 3px grey ,inset -2px -2px 3px lightgray;
+   -webkit-background-clip: text;  
+   background-clip : text;
+}
+.screen__operation {
+    position:absolute;
+    font-size : 1.5rem;
+    top : 1rem;
+    right : 1rem;
+     
+    color : lightskyblue;
+}
+
+.digits {
+    grid-row : start-row 1 / end-row 4;
+    grid-column : 1/2;
+    
+    display : grid;
+    grid-template-rows: repeat(autofit,[row-start] 1fr [row-end]); 
+    grid-template-columns: repeat(3,[col-start] 1fr [col-end]);
+    grid-gap : 2%;
+    align-items: center;
+}
+
+[data-id="0"] {
+   grid-row : row-start 4 /row-end 4;
+   grid-column : 2/-1;
+   font-size : 3.5rem;
+
+}
+[data-id="."] {
+   grid-row : row-start 4 /row-end 4;
+   grid-column : 1/2;
+   font-size : 3.5rem;
+
+}
+.digits__key {
+     background: 
+    linear-gradient(#9ea1a6, #fdfdfe) content-box, 
+    linear-gradient(#fff, #9c9fa4) padding-box, 
+    linear-gradient(#eee, #a4a7ab) border-box;
+    border-radius: 15px 15px;
+    text-align : center;
+    padding :5px;
+    margin : 2px;
+}
+.digits__key:not([class~="bottom"]) {
+    
+    font-size : 3rem;
+    align-self: stretch;
+}
+
+
+
+.operations {
+  grid-row :  start-row 1 /  end-row 4;
+  grid-column : 2/-1;
+  display : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items: stretch;
+  
+}
+.operations__key {
+    
+    text-align: center;
+    transition: all 0.5s;
+    border-radius : 15px 15px;
+}
+
+.operations__key:hover,.digits__key:hover{
+    box-shadow : 2px 0 1px grey   ,  0 1px 1px lightgray;
+    
+}
+
+.operations__key:hover {
+   background : yellowgreen;
+}
+
+
+
+.operations__key:not([data-id="equals"]) {
+    flex : 1;
+    font-size : 2.5rem;
+}
+
+.error {
+    font-size : 2rem;
+    color : green;
+}
+
+
+[data-id="equals"]  {
+    flex : 2;
+    font-size : 3rem;
+    justify-self: center;
+}
+
+
+.footer {
+    color : grey;
+    font-size : 0.8rem;
+    display : flex;
+    justify-content : flex-end;
+    align-items: center;
+    margin-top : 5px;
+}
+
+.footer   a:active ,.footer   a:link,.footer   a  {
+    text-decoration : none;
+    color : currentColor;
+    padding : 5px;
+}
+
+
+
+
+@media (max-width : 500px){
+    .header {
+        display : none;
+    }
+    .container,  .operations {
+        
+        display : flex;
+        flex-direction : column;
+        align-items: stretch;
+        justify-content: space-around;
+    }
+     .digits {
+        
+         margin : 10% 0;
+     }
+    .screen  {
+        flex : 1;
+        margin-top : 10%;
+         
+    }
+
+    .operations {
+        flex : 1;
+        display : flex;
+        flex-wrap : wrap;
+        padding-bottom: 1rem;
+    }
+
+     
+     
+
+     
+}
